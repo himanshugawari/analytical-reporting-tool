@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
     
  <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+ 
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+ 
 
 <!DOCTYPE html>
 <html>
 <head>
-
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -19,6 +20,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+ <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+ <tilesx:useAttribute name="current"/>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title"/></title>
@@ -41,9 +46,8 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href='<spring:url value="/"/>'>HOME</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"/>'>HOME</a></li>
+              <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html"/>">USERS</a></li>
             </ul>
   
           </div><!--/.nav-collapse -->
@@ -55,8 +59,9 @@
 
 <br><br>
 
-
-<tiles:insertAttribute name="footer"/>
+<center>
+<tiles:insertAttribute name="footer" />
+</center>
 
 </div>
 </body>

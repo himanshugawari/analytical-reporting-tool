@@ -55,21 +55,21 @@ public class InitDbService {
 		
 		Blog blogHimanshu=new Blog();
 		blogHimanshu.setName("HIMANSHU");
-		blogHimanshu.setUrl("http://feeds.feedburner.com/javavids?format=xml");
+		blogHimanshu.setUrl("http://feeds.feedburner.com/himanshu?format=xml");
 		blogHimanshu.setUser(userAdmin);
 		blogRepository.save(blogHimanshu);
 		
 		Item item1=new Item();
 		item1.setBlog(blogHimanshu);
 		item1.setTitle("first");
-		item1.setLink("http://www.javavids.com");
+		item1.setLink("http://www.himanshu.com");
 		item1.setPublishedDate(new Date());
 		itemRepository.save(item1);
 		
 		Item item2=new Item();
 		item2.setBlog(blogHimanshu);
 		item2.setTitle("second");
-		item2.setLink("http://www.javavids.com");
+		item2.setLink("http://www.hardik.com");
 		item2.setPublishedDate(new Date());
 		itemRepository.save(item2);
 		
