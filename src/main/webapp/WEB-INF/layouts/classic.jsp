@@ -5,7 +5,9 @@
  
  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
  
+ <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,17 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"/>'>HOME</a></li>
+              <security:authorize access="hasRole('ROLE_ADMIN')">
               <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html"/>">USERS</a></li>
-            </ul>
+              </security:authorize>
+              <li class="${current == 'register' ? 'active' : ''}"><a href="<spring:url value="/register.html"/>">REGISTRATION</a></li>
+              <security:authorize access="! isAuthenticated()">
+              <li class="${current == 'login' ? 'active' : ''}"><a href="<spring:url value="/login.html"/>">LOGIN</a></li>
+              </security:authorize>
+              <security:authorize access="isAuthenticated()">
+              <li><a href="<spring:url value="/logout"/>">LOGOUT</a></li>
+              </security:authorize>
+             </ul>
   
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
